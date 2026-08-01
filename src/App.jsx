@@ -1,25 +1,23 @@
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Welcome from "./components/Welcome";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <Router>
-      <nav>
-        <Link to="/">Home</Link> | {" "}
-        <Link to="/about">About</Link> | {" "}
-        <Link to="/contact">Contact</Link> | {" "}
-      </nav>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        {/* <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
       </Routes>
     </Router>
   );
 }
-
+ 
 export default App;
