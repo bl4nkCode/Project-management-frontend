@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import api from "../axios";
 
@@ -7,6 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +24,8 @@ export default function Login() {
       localStorage.setItem("token", token);
 
       setMessage(response.data.message);
+      navigate("/dashboard"); // Redirect to dashboard after successful login
+      
     } catch (error) {
       if (error.response && error.response.data.message) {
         setMessage(error.response.data.message);
@@ -115,3 +118,5 @@ export default function Login() {
     </div>
   );
 }
+
+
