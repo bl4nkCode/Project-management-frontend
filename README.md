@@ -1,16 +1,49 @@
-# React + Vite
+# Task & Project Manager — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React frontend for a full-stack Task & Project Manager app, built with Vite, TailwindCSS, and Axios. Connects to a Laravel API backend for authentication and data.
 
-Currently, two official plugins are available:
+Built as a practice project to strengthen React fundamentals and full-stack integration, paired with a Laravel + Sanctum backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- 🔐 Login & registration flows connected to a Laravel Sanctum API
+- 📁 Create, update, delete, and complete projects & tasks
+- 🔍 Search, filtering, and pagination for tasks
+- 📅 Task status and deadline tracking
+- 🎨 Styled with TailwindCSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework:** React (Vite)
+- **Styling:** TailwindCSS
+- **HTTP client:** Axios
+- **Backend:** [Laravel API](https://github.com/bl4nkCode/Project-management-backend) with Sanctum auth
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Prerequisites
+- Node.js & npm
+- The [backend API](https://github.com/bl4nkCode/Project-management-backend) running locally (e.g. via Laragon)
+
+### Setup
+
+```bash
+git clone https://github.com/bl4nkCode/Project-management-frontend.git
+cd Project-management-frontend
+npm install
+npm run dev
+```
+
+The app will run at `http://localhost:5173` by default and expects the Laravel API to be running (check your Axios base URL / `.env` config).
+
+## Screenshots
+
+*(Add a screenshot or short GIF of the app here — this makes a big difference for anyone browsing your profile.)*
+
+## Related Repo
+
+Backend (Laravel + Sanctum): [Project-management-backend](https://github.com/bl4nkCode/Project-management-backend)
+
+## Status
+
+Practice project — actively developed locally. Deployment coming soon.
