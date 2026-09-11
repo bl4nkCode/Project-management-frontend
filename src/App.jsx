@@ -14,6 +14,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Projects from "./pages/Project";
 import AddProject from "./pages/AddProject";
 import EditProject from "./pages/EditProject";
+import Tasks from "./pages/Task";
+import AddTask from "./pages/AddTask";
+import EditTask from "./pages/EditTask";
+import ProjectDetails from "./pages/ProjectDetails";
 
 function Layout() {
   const location = useLocation();
@@ -67,6 +71,43 @@ function Layout() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/tasks"
+          element={
+            <ProtectedRoute>
+              <Tasks />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/tasks/add"
+          element={
+            <ProtectedRoute>
+              <AddTask />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route
+          path="/tasks/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditTask />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/project-details/:id"
+          element={
+            <ProtectedRoute>
+              <ProjectDetails />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </>
   );
