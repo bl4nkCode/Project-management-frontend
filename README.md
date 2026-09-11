@@ -36,14 +36,10 @@ npm run dev
 
 The app will run at `http://localhost:5173` by default and expects the Laravel API to be running (check your Axios base URL / `.env` config).
 
-## Screenshots
-
-*(Add a screenshot or short GIF of the app here — this makes a big difference for anyone browsing your profile.)*
-
 ## Related Repo
 
 Backend (Laravel + Sanctum): [Project-management-backend](https://github.com/bl4nkCode/Project-management-backend)
 
 ## Status
 
-Practice project — actively developed locally. Deployment coming soon.
+Practice project — actively developed locally.
