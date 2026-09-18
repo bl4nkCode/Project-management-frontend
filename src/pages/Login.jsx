@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import api from "../axios";
 
 export default function Login() {
@@ -22,15 +23,20 @@ export default function Login() {
 
       const token = response.data.token;
       localStorage.setItem("token", token);
+      const user = response.data.user;
+      localStorage.setItem("user", JSON.stringify(user));
 
-      setMessage(response.data.message);
-      navigate("/dashboard"); // Redirect to dashboard after successful login
+      //setMessage(response.data.message);
+      toast.success(response.data.message); // Show success toast
+      navigate('/dashboard'); // Redirect to dashboard after successful login
       
     } catch (error) {
       if (error.response && error.response.data.message) {
-        setMessage(error.response.data.message);
+        //setMessage(error.response.data.message);
+        toast.error(error.response.data.message); // Show error toast
       } else {
-        setMessage("Something went wrong. Please try again later.");
+        //setMessage("Something went wrong. Please try again later.");
+        toast.error("Something went wrong. Please try again later.");
       }
     } finally {
       setLoading(false);
@@ -107,7 +113,7 @@ export default function Login() {
         >
           {loading ? "Submitting..." : "Log In"}
         </button>
-        {message && <p className="text-red-500 text-sm mb-2">{message}</p>}
+        {/* {message && <p className="text-red-500 text-sm mb-2">{message}</p>} */}
         <p className="text-center mt-4">
           Don't have an account?{" "}
           <Link to="/register" className="text-blue-500 underline">

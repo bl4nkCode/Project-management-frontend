@@ -18,6 +18,7 @@ import Tasks from "./pages/Task";
 import AddTask from "./pages/AddTask";
 import EditTask from "./pages/EditTask";
 import ProjectDetails from "./pages/ProjectDetails";
+import { ToastContainer } from "react-toastify";
 
 function Layout() {
   const location = useLocation();
@@ -109,6 +110,7 @@ function Layout() {
         />
 
       </Routes>
+      <ToastContainer position="top-right" autoCClose={4000} hideProgressBar />
     </>
   );
 }
@@ -118,6 +120,7 @@ function App() {
     <Router>
       <Layout />
     </Router>
+    
   );
 }
 

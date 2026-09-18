@@ -12,10 +12,18 @@ import {
 export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
-  // Collapse sidebar by default on smaller screens
+
   useEffect(() => {
+    const user = localStorage.getItem("user");
+    if(user){
+      const userData = JSON.parse(user);
+      setUserName(userData.name);
+    }
+    
+    // Collapse sidebar by default on smaller screens
     if (window.innerWidth < 768) {
       setSidebarOpen(false);
     }
@@ -24,6 +32,7 @@ export default function DashboardLayout({ children }) {
   // Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/login");
   }
 
@@ -116,7 +125,7 @@ export default function DashboardLayout({ children }) {
                 className="w-10 h-10 rounded-full border"
               />
               <span className="hidden md:flex items-center text-gray-700 font-medium gap-1">
-                Welcome, John
+                Welcome, {userName || "User"}
                 <FiChevronDown
                   className={`transition-transform duration-200 ${
                     dropdownOpen ? "rotate-180" : "rotate-0"

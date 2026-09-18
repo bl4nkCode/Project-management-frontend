@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import api from "../axios";
+import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
@@ -26,16 +27,19 @@ export default function Register() {
         password,
       });
 
-      setMessage(response.data.message);
+      //setMessage(response.data.message);
+      toast.success(response.data.message); // Show success toast
       navigate("/login"); // Redirect to login page after successful registration
 
     } catch (error) {
       if (error.response && error.response.data.message) {
-        setMessage(error.response.data.message);
+        //setMessage(error.response.data.message);
+        toast.error(error.response.data.message); // Show error toast
       } else {
-        setMessage(
-          error.message || "Something went wrong. Please try again later.",
-        );
+        //setMessage(
+        //  error.message || "Something went wrong. Please try again later.",
+        //);
+        toast.error(error.message || "Something went wrong. Please try again later.");
       }
     } finally {
       setLoading(false);
@@ -97,7 +101,7 @@ export default function Register() {
         >
           {loading ? "Submitting..." : "Create Account"}
         </button>
-        {message && <p className="text-red-500 text-sm mb-2">{message}</p>}
+        {/* {message && <p className="text-red-500 text-sm mb-2">{message}</p>} */}
         <p className="text-center mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-500 underline">
