@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../axios";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../components/DashboardLayout";
+import { toast } from "react-toastify";
 
 export default function AddTask() {
   const [projects, setProjects] = useState([]);
@@ -55,14 +56,12 @@ export default function AddTask() {
           },
         },
       );
-
-      alert("Task added successfully!");
+      toast.success("Task added successfully!"); // Show success toast
+      //alert("Task added successfully!");
       navigate("/tasks");
-
     } catch (error) {
       console.log("Error adding tasks:", error);
-      alert("Failed to add task.");
-      
+      toast.error("Failed to add task."); // Show error toast
     } finally {
       setLoading(false);
     }
@@ -82,9 +81,10 @@ export default function AddTask() {
               <label className="block text-sm font-medium text-gray-700">
                 Select Project
               </label>
-              <select 
-              onChange={(e) => setProjectId(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 p-2">
+              <select
+                onChange={(e) => setProjectId(e.target.value)}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 p-2"
+              >
                 <option value="">--Select Project--</option>
                 {projects.map((project) => (
                   <option value={project.id}>{project.name}</option>

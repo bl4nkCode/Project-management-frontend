@@ -110,7 +110,7 @@ function Layout() {
         />
 
       </Routes>
-      <ToastContainer position="top-right" autoCClose={4000} hideProgressBar />
+      <ToastContainer position="top-right" autoClose={4000} hideProgressBar />
     </>
   );
 }
