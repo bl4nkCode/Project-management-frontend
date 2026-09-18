@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../components/DashboardLayout";
 import api from "../axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -45,11 +46,11 @@ export default function Tasks() {
 
       // Remove the deleted task from UI
       setTasks(tasks.filter((task) => task.id !== id));
-
-      alert("Task deleted successfully!");
+      toast.success("Task deleted successfully!"); // Show success toast
+      //alert("Task deleted successfully!");
     }catch(error){
       console.log("Error deleting task:", error);
-      alert("Something went wrong with deleting the task.");
+      toast.error("Failed to delete task."); // Show error toast
     }
   };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../axios";
 import DashboardLayout from "../components/DashboardLayout";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -44,11 +45,11 @@ export default function Projects() {
       });
       // Remove the deleted project from UI
       setProjects(projects.filter((project) => project.id !== id));
-
-      alert("Project deleted successfully!");
+      toast.success("Project deleted successfully!"); // Show success toast
+      //alert("Project deleted successfully!");
     }catch(error){
       console.log("Error deleting project:", error);
-      alert("Something went wrong with deleting the project.");
+      toast.error("Failed to delete project."); // Show error toast
     }
   }
 
